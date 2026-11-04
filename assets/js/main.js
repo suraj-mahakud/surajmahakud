@@ -47,6 +47,22 @@ document.querySelectorAll('main section[id]').forEach(section => sectionObserver
 const currentYear = document.getElementById('current-year');
 if (currentYear) currentYear.textContent = String(new Date().getFullYear());
 
+const portraitToggle = document.getElementById('portrait-toggle');
+if (portraitToggle) {
+    const portraits = portraitToggle.querySelectorAll('img');
+    portraitToggle.addEventListener('click', () => {
+        const nextPortrait = Number(portraitToggle.dataset.activePortrait) === 0 ? 1 : 0;
+        portraits.forEach((portrait, index) => {
+            const isActive = index === nextPortrait;
+            portrait.classList.toggle('is-active', isActive);
+            portrait.setAttribute('aria-hidden', String(!isActive));
+        });
+        portraitToggle.dataset.activePortrait = String(nextPortrait);
+        portraitToggle.setAttribute('aria-pressed', String(nextPortrait === 1));
+        portraitToggle.setAttribute('aria-label', `Switch to portrait ${nextPortrait === 0 ? 2 : 1}`);
+    });
+}
+
 const audioToggle = document.getElementById('audio-toggle');
 const ambientAudio = document.getElementById('ambient-audio');
 if (audioToggle && ambientAudio) {

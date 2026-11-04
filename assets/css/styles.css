@@ -64,16 +64,16 @@ h1, h2, h3, p { margin-top: 0; }
 .hero-visual { position: relative; display: grid; min-width: 0; min-height: 510px; place-items: center; perspective: 1100px; isolation: isolate; }
 .hero-visual::before { position: absolute; z-index: -1; width: 73%; aspect-ratio: 1; border-radius: 50%; background: rgba(20, 128, 155, .15); filter: blur(62px); content: ""; }
 .holo-core { position: relative; z-index: 2; width: clamp(215px, 27vw, 332px); aspect-ratio: 1; transform: perspective(950px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)); transition: transform .22s ease-out; }
-.holo-frame { position: absolute; inset: 8%; display: grid; overflow: hidden; place-items: center; border: 1px solid rgba(102, 228, 239, .5); border-radius: 50%; background: radial-gradient(circle at 50% 45%, rgba(19, 62, 80, .65), rgba(7, 17, 26, .95) 68%); box-shadow: 0 0 45px rgba(66, 227, 247, .18), inset 0 0 35px rgba(66, 227, 247, .16); }
+.holo-frame { position: absolute; inset: 8%; display: grid; overflow: hidden; place-items: center; padding: 0; border: 1px solid rgba(102, 228, 239, .5); border-radius: 50%; background: radial-gradient(circle at 50% 45%, rgba(19, 62, 80, .65), rgba(7, 17, 26, .95) 68%); box-shadow: 0 0 45px rgba(66, 227, 247, .18), inset 0 0 35px rgba(66, 227, 247, .16); color: inherit; cursor: pointer; }
+.holo-frame:hover { border-color: rgba(102, 228, 239, .85); box-shadow: 0 0 55px rgba(66, 227, 247, .28), inset 0 0 35px rgba(66, 227, 247, .2); }
+.holo-frame:focus-visible { outline: 2px solid var(--cyan); outline-offset: 5px; }
 .holo-frame::before { position: absolute; z-index: 1; inset: 8%; border: 1px solid rgba(125, 230, 242, .2); border-radius: 50%; content: ""; }
-.holo-frame img { width: 81%; height: 88%; align-self: end; object-fit: cover; object-position: center top; opacity: .94; filter: saturate(.68) sepia(.13) hue-rotate(135deg) contrast(1.05); mask-image: linear-gradient(to bottom, black 64%, transparent 100%); }
+.holo-frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 43%; opacity: 0; filter: saturate(.84) contrast(1.04); mask-image: linear-gradient(to bottom, black 80%, transparent 100%); pointer-events: none; transition: opacity .45s ease; }
+.holo-frame img.is-active { opacity: .96; }
 .holo-scan { position: absolute; z-index: 2; inset: 4% 0 auto; height: 1px; background: var(--cyan); box-shadow: 0 0 12px 2px rgba(102, 228, 239, .7); animation: scan 4.3s ease-in-out infinite; }
 .frame-corner { position: absolute; z-index: 3; width: 18px; height: 18px; border-color: var(--cyan); border-style: solid; opacity: .85; }
-.corner-tl { top: 0; left: 12%; border-width: 1px 0 0 1px; }.corner-tr { top: 0; right: 12%; border-width: 1px 1px 0 0; }.corner-bl { bottom: 0; left: 12%; border-width: 0 0 1px 1px; }.corner-br { right: 12%; bottom: 0; border-width: 0 1px 1px 0; }
-.holo-orbit { position: absolute; border: 1px solid rgba(102, 228, 239, .16); border-radius: 50%; pointer-events: none; }
-.orbit-outer { width: min(98%, 470px); aspect-ratio: 1; border-style: dashed; animation: orbit 46s linear infinite; }
-.orbit-outer::before, .orbit-middle::after { position: absolute; top: 15%; left: 15%; width: 8px; height: 8px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 14px var(--gold); content: ""; }
-.orbit-middle { width: min(79%, 380px); aspect-ratio: 1; border-color: rgba(255, 95, 84, .28); transform: rotateX(68deg) rotate(-35deg); }
+.corner-tl { top: 0; left: 12%; border-width: 1px 0 0 1px; }.corner-tr { top: 0; right: 12%; border-width: 1px 1px 0 0; }.corner-bl { bottom: 0; left: 12%; border-width: 0 0 1px 1px; }.corner-br { right: 12%; bottom: 0; border-width: 0 1px sift(9px); }
+.hud-card-top { top: 16%; right: 0; }.hud-card-bottom { bottom: 17%; left: 0; }
 .orbit-middle::after { top: auto; right: 13%; bottom: 13%; left: auto; width: 6px; height: 6px; background: var(--red); box-shadow: 0 0 12px var(--red); }
 .orbit-inner { width: min(72%, 330px); aspect-ratio: 1; border-color: rgba(102, 228, 239, .3); transform: rotateY(68deg) rotate(26deg); }
 .holo-platform { position: absolute; bottom: 12%; width: 54%; height: 11%; border: 1px solid rgba(102, 228, 239, .38); border-radius: 50%; background: radial-gradient(ellipse, rgba(102, 228, 239, .3), rgba(102, 228, 239, .02) 68%, transparent 70%); box-shadow: 0 14px 44px rgba(102, 228, 239, .16); transform: rotateX(66deg); }
